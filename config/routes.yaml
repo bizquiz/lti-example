@@ -1,0 +1,11 @@
+lti_index:
+    path: /
+    methods:
+      - GET
+    controller: App\Controller\LTIController::index
+
+lti_form:
+    path: /
+    methods:
+      - POST
+    controller: App\Controller\LTIController::form

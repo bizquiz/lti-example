@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BizQuiz LTI{% endblock %}
+
+{% block body %}
+<form method="post" action="/">
+  <h2>LTI login example</h3>
+  <p>
+    This form enables on the fly editing of all LTI paramters used in a basic launch request.<br />
+    This configuration should be stored on the server and should not be altered by ordinary users.<br />
+    Keep the "shared secret" confidential!
+  </p>
+  <hr />
+  <h3>LTI Provider</h3>
+  <div class="row">
+    <div class="columns">
+      <label for="consumerKeyInput">Consumer key</label>
+      <input required name="consumerKey" class="u-full-width" type="text" placeholder="xyz" id="consumerKeyInput" value="{{ consumerKey }}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns">
+      <label for="sharedSecretInput">Shared secret</label>
+      <input required name="sharedSecret" class="u-full-width" type="text" placeholder="password" id="sharedSecretInput" value="{{ sharedSecret }}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns">
+      <label for="launchUrlInput">Launch URL</label>
+      <input required name="launchUrl" class="u-full-width" type="text" placeholder="https://bizquiz.cloud/api/lti" id="launchUrlInput" value="{{ launchUrl }}">
+    </div>
+  </div>
+  <hr />
+  <h3>User</h3>
+  <div class="row">
+    <div class="columns">
+      <label for="idInput">User Id</label>
+      <input required name="id" class="u-full-width" type="text" placeholder="12345" id="idInput" value="{{ id }}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns">
+      <label for="emailInput">Your email (optional)</label>
+      <input name="email" class="u-full-width" type="email" placeholder="test@mailbox.com" id="emailInput">
+    </div>
+  </div>
+  <div class="row">
+    <div class="six columns">
+      <label for="firstnameInput">Firstname</label>
+      <input name="firstname" class="u-full-width" type="text" placeholder="Max" id="firstnameInput">
+    </div>
+    <div class="six columns">
+      <label for="lastnameInput">Lastname</label>
+      <input name="lastname" class="u-full-width" type="text" placeholder="Muster" id="lastnameInput">
+    </div>
+  </div>
+  <input class="button-primary" type="submit" value="Generate signed LTI launch form">
+</form>
+{% endblock %}

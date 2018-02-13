@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BizQuiz LTI{% endblock %}
+
+{% block body %}
+<form method="post" action="{{ launchUrl }}">
+  <h2>LTI form</h3>
+  <p>
+    In a real world implementation some javascript would immediately submit this form.<br />
+    To illustrated how LTI works the form is not submited by javascript.<br />
+    Please note that this form contains a timestamp and is only valid for a few secounds.</p>
+  <hr />
+  {% for key, value in parameters %}
+  <div class="row">
+    <div class="columns">
+      <label for="{{ key }}">{{ key }}</label>
+      <input name="{{ key }}" class="u-full-width" type="text" id="{{ key }}" value="{{ value }}">
+    </div>
+  </div>
+  {% endfor %}
+  <input class="button-primary" type="submit" value="Launch LTI tool">
+</form>
+{% endblock %}
