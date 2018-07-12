@@ -10,11 +10,15 @@ class LTIController extends Controller
     public function index(Request $req)
     {
         // copy some url paramters to enabled pre filled form urls
+        $id = $req->get('id', '');
         return $this->render('lti/index.html.twig', [
             'consumerKey' => $req->get('consumerKey', ''),
             'sharedSecret' => $req->get('sharedSecret', ''),
             'launchUrl' => $req->get('launchUrl', 'https://bizquiz.cloud/api/lti'),
-            'id' => $req->get('id', ''),
+            'customGroups' => $req->get('customGroups', ''),
+            'customTeam' => $req->get('customTeam', ''),
+            'launchPresentationLocale' => $req->get('launchPresentationLocale', ''),
+            'id' => $id === 'random' ? rand(10000, 99999) : $id,
         ]);
     }
 
@@ -49,14 +53,24 @@ class LTIController extends Controller
         if (!empty($lastname)) {
             $parameters['lis_person_name_family'] = $lastname;
         }
-
         if (!empty($firstname) || !empty($lastname)) {
             $parameters['lis_person_name_full'] = trim($firstname.' '.$lastname);
         }
-
         $email = $req->get('email', null);
         if (!empty($email)) {
             $parameters['lis_person_contact_email_primary'] = $email;
+        }
+        $locale = $req->get('launchPresentationLocale', null);
+        if (!empty($locale)) {
+            $parameters['launch_presentation_locale'] = $locale;
+        }
+        $groups = $req->get('customGroups', null);
+        if (!empty($groups)) {
+            $parameters['custom_groups'] = $groups;
+        }
+        $team = $req->get('customTeam', null);
+        if (!empty($team)) {
+            $parameters['custom_team'] = $team;
         }
 
         $oauthSignature = $this->getOAuthSignature($parameters, $req->get('sharedSecret'), $req->get('launchUrl'));

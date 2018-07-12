@@ -2,6 +2,12 @@
 
 {% block title %}BizQuiz LTI{% endblock %}
 
+{% block stylesheets %}<style>
+p.info {
+  margin-bottom: 1rem;
+}
+</style>{% endblock %}
+
 {% block body %}
 <form method="post" action="/">
   <h2>LTI login example</h3>
@@ -39,9 +45,13 @@
     </div>
   </div>
   <div class="row">
-    <div class="columns">
+    <div class="six columns">
       <label for="emailInput">Your email (optional)</label>
       <input name="email" class="u-full-width" type="email" placeholder="test@mailbox.com" id="emailInput">
+    </div>
+    <div class="six columns">
+      <label for="launchPresentationLocaleInput">Locale (optional)</label>
+      <input name="launchPresentationLocale" class="u-full-width" type="text" placeholder="en-US" id="launchPresentationLocaleInput">
     </div>
   </div>
   <div class="row">
@@ -54,6 +64,23 @@
       <input name="lastname" class="u-full-width" type="text" placeholder="Muster" id="lastnameInput">
     </div>
   </div>
+  <hr />
+  <h3>BizQuiz Custom Parameters</h3>
+  <div class="row">
+    <div class="columns">
+      <label for="customGroupsInput">Groups (optional)</label>
+      <p class="info">A comma-separated list of all groups to which the user is to be added. Note that the same language must always be used for the group names, regardless of the user language. Groups that do not yet exist in the BizQuiz will be created.</p>
+      <input name="customGroups" class="u-full-width" type="text" placeholder="Learner, Novice" id="customGroupsInput" value="{{ customGroups }}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="columns">
+      <label for="customTeamInput">Team (optional)</label>
+      <p class="info">Name of the team to which the user is to be added. Non-existing teams are created.</p>
+      <input name="customTeam" class="u-full-width" type="text" placeholder="Bionic Beaver" id="customTeamInput" value="{{ customTeam }}">
+    </div>
+  </div>
+  <hr />
   <input class="button-primary" type="submit" value="Generate signed LTI launch form">
 </form>
 {% endblock %}
