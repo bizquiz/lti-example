@@ -87,10 +87,7 @@ class LTIController extends Controller
     {
         // Parse & add query params as base string parameters if they exists
         $url = parse_url($url);
-        if (isset($url['query'])) {
-            parse_str($url['query'], $queryParams);
-            $parameters += $queryParams;
-        }
+
         // Remove default ports
         $explicitPort = isset($url['port']) ? $url['port'] : null;
         if (('https' === $url['scheme'] && 443 === $explicitPort) || ('http' === $url['scheme'] && 80 === $explicitPort)) {
