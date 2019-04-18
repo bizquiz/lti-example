@@ -68,14 +68,14 @@ p.info {
   <h3>BizQuiz Custom Parameters</h3>
   <div class="row">
     <div class="columns">
-      <label for="customGroupsInput">Groups (optional) <code>array&lt;VARCHAR(255)&gt;</code> <i>custom_team</i></label>
+      <label for="customGroupsInput">Groups (optional) <code>array&lt;VARCHAR(255)&gt;</code> <i>custom_groups</i></label>
       <p class="info">A comma-separated list of all groups to which the user is to be added. Note that the same language must always be used for the group names, regardless of the user language. Groups that do not yet exist in the BizQuiz will be created.</p>
       <input name="customGroups" class="u-full-width" type="text" placeholder="Learner, Novice" id="customGroupsInput" value="{{ customGroups }}">
     </div>
   </div>
   <div class="row">
     <div class="columns">
-      <label for="customTeamInput">Team (optional) <code>VARCHAR(32)</code> <i>custom_groups</i></label>
+      <label for="customTeamInput">Team (optional) <code>VARCHAR(32)</code> <i>custom_team</i></label>
       <p class="info">Name of the team to which the user is to be added. Non-existing teams are created.</p>
       <input name="customTeam" class="u-full-width" type="text" placeholder="Bionic Beaver" id="customTeamInput" value="{{ customTeam }}">
     </div>
