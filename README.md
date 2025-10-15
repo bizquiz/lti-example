@@ -8,7 +8,7 @@ All LTI related code can be found in the [LTIController](https://github.com/bizq
 
 *Requirements*
 
- - php version 7.1.3 or greater
+ - php version 8.2 or greater
  - composer
 
 ```
